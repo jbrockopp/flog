@@ -49,7 +49,7 @@ func Generate(option *Option) error {
 		for line := 0; line < option.Number; line++ {
 			time.Sleep(delay)
 			log := NewLog(option.Format, created)
-			_, _ = writer.Write([]byte(log + "\n"))
+			_, _ = writer.Write([]byte(fmt.Sprintf("%d ", line) + log + "\n"))
 
 			if (option.Type != "stdout") && (option.SplitBy > 0) && (line > option.SplitBy*splitCount) {
 				_ = writer.Close()
